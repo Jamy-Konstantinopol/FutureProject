@@ -17,7 +17,7 @@ APlayableHuman::APlayableHuman()
 
 void APlayableHuman::Look(const FInputActionValue& InActionValue)
 {
-	if (Controller != nullptr)
+	if (Controller)
 	{
 		FVector2D LookAxisVector = InActionValue.Get<FVector2D>();
 
