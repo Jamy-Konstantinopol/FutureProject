@@ -8,6 +8,8 @@
 
 class USpringArmComponent;
 class UCameraComponent;
+class UInputMappingContext;
+class UInputAction;
 
 UCLASS()
 class FUTUREPROJECT_API APlayableHuman : public AHuman
@@ -20,6 +22,12 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
 	UCameraComponent* CameraComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Control")
+	UInputMappingContext* InputMappingContext;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Control")
+	UInputAction* LookAction;
 
 public:
 	APlayableHuman();
