@@ -16,8 +16,3 @@ void AHuman::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
-
-void AHuman::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-}
