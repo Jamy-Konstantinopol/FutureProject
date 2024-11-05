@@ -34,6 +34,7 @@ public:
 	APlayableHuman();
 
 protected:
+	virtual void BeginPlay() override;
 	virtual void Look(const FInputActionValue& InActionValue);
 
 public:

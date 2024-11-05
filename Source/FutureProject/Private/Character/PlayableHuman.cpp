@@ -3,6 +3,7 @@
 #include "Character/PlayableHuman.h"
 #include "Camera/CameraComponent.h"
 #include "EnhancedInputComponent.h"
+#include "EnhancedInputSubsystems.h"
 #include "GameFramework/SpringArmComponent.h"
 
 APlayableHuman::APlayableHuman()
@@ -13,6 +14,19 @@ APlayableHuman::APlayableHuman()
 
 	CameraComponent = CreateDefaultSubobject<UCameraComponent>("CameraComponent");
 	CameraComponent->SetupAttachment(CameraBoom);
+}
+
+void APlayableHuman::BeginPlay()
+{
+	Super::BeginPlay();
+
+	if(APlayerController* PlayerController = Cast<APlayerController>(Controller))
+	{
+		if (UEnhancedInputLocalPlayerSubsystem* Subsystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(PlayerController->GetLocalPlayer()))
+		{
+			Subsystem->AddMappingContext(InputMappingContext, 0);
+		}
+	}
 }
 
 void APlayableHuman::Look(const FInputActionValue& InActionValue)
