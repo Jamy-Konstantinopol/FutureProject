@@ -8,6 +8,9 @@
 
 class USpringArmComponent;
 class UCameraComponent;
+class UInputMappingContext;
+class UInputAction;
+struct FInputActionValue;
 
 UCLASS()
 class FUTUREPROJECT_API APlayableHuman : public AHuman
@@ -21,8 +24,18 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Components")
 	UCameraComponent* CameraComponent;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Control")
+	UInputMappingContext* InputMappingContext;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Control")
+	UInputAction* LookAction;
+
 public:
 	APlayableHuman();
+
+protected:
+	virtual void BeginPlay() override;
+	virtual void Look(const FInputActionValue& InActionValue);
 
 public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
